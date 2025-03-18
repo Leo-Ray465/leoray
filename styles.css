@@ -1,0 +1,171 @@
+.heading {
+  color: #2c3e50;
+  padding: 10px;
+  text-align: left;
+}
+
+body {
+  background-color: #f5f5f5;
+  font-family: 'Arial', sans-serif;
+}
+
+textarea.emphasis {
+  background-color: #f39c12;
+  max-width: 400px;
+  max-height: 200px;
+}
+
+#disLabel {
+  font-weight: bold;
+}
+
+.info {
+  background-color: #3498db;
+  border-radius: 5px;
+  padding: 15px;
+  color: #ecf0f1;
+  font-size: large;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 10px auto;
+}
+
+.flex_group {
+  display: flex;
+  margin: 10px;
+  justify-content: space-around;
+	width: 100%;
+}
+
+.flex_navigation a {
+  background-color: #34495e;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 5px;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+	width: 100%;
+}
+
+.flex_navigation a:hover {
+  background-color: #e74c3c;
+  color: #ffffff;
+	width: 100%;
+}
+
+a:link {
+  color: #3498db;
+  text-decoration: none;
+	width: 100%;
+}
+
+.main_image {
+  width: 200px;
+  height: 266px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+@media screen and (max-width: 900px) {
+  body {
+    max-width: 900px;
+    font-size: small;
+  }
+
+  .flex_group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flex_navigation {
+    background-color: #34495e;
+    flex: 1;
+    color: #ecf0f1;
+    text-align: left;
+    border: 3px solid #2c3e50;
+    margin: 3px;
+  }
+}
+
+.top {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #3498db, #34495e);
+  color: #ecf0f1;
+}
+
+footer {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 10px;
+}
+
+.footer-links a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #e74c3c;
+}
+
+#imageDisplay{
+  width: 100%;
+  height: auto;
+
+  max-width: 400px;
+  min-height: 300px;
+	padding-bottom: 20px;
+}
+
+.slideshow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px
+}
+
+.left_arrow, .right_arrow {
+  font-size: 2em;
+  cursor: pointer;
+  color: black;
+  padding: 10px;
+
+}
+
+.sendButton {
+  background-color: #34495e;
+  color: #ecf0f1;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 20px;
+}
+
+.sendButton:hover {
+  background-color: #e74c3c;
+  color: #ffffff;
+}
+
+.contactFlex{
+	display: flex;
+  justify-content: space-around;
+	width: fit-content;
+	margin-bottom: 10px;
+}
+
+.contactInput{
+	resize: none;
+}
+
+.contactField{
+	margin-right: 10px;
+	margin-bottom: 10px;
+	resize:none;
+}
