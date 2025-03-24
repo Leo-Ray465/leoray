@@ -11,11 +11,17 @@ images = ["projectsFolder/IMG_8032.jpeg", "projectsFolder/IMG_5764.jpeg",
           "projectsFolder/IMG_6923.jpeg", "projectsFolder/IMG_6949.jpeg",
           "projectsFolder/IMG_6956.jpeg"];
 let currentImage = 0;
+let currentInterval;
 
 function startSlides(){
   img = document.getElementById("imageDisplay");
   img.src = images[currentImage];
-  setInterval('nextPhoto()', 3500);
+  currentInterval = setInterval('nextPhoto()', 3500);
+}
+
+function resetInterval(){
+  clearInterval(currentInterval);
+  currentInterval = setInterval(nextPhoto, 3500);
 }
 
 function previousPhoto(){
@@ -25,7 +31,7 @@ function previousPhoto(){
   }
   img = document.getElementById("imageDisplay");
   img.src = images[currentImage];
-
+  resetInterval();
 }
 
 function nextPhoto(){
@@ -35,7 +41,7 @@ function nextPhoto(){
   }
   img = document.getElementById("imageDisplay");
   img.src = images[currentImage];
-
+  resetInterval();
 }
 
 window.onload = startSlides;
