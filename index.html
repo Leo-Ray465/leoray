@@ -8,6 +8,13 @@
 </head>
 <body>
 
+  <script>
+    const savedColor = localStorage.getItem("themeColor");
+    if (savedColor) {
+      document.documentElement.style.setProperty("--primary-color", savedColor);
+    }
+  </script>
+
   <section class="top">
     <div class="top-wrapper">
       <div class="social-icons">
@@ -29,6 +36,8 @@
         <p>A collection of my experience and projects</p>
       </div>
     </div>
+
+
   </section>
   
   
@@ -49,6 +58,9 @@
         <div class="flex_navigation">
             <a href="contact.html">Contact Me</a>
         </div>
+        <div class="flex_navigation">
+          <a href="options.html">Options</a>
+        </div>
       </div>
 
     </div>
@@ -68,11 +80,13 @@
     </div>
 
     <footer>
-        <p> Last Updated April 2025</p>
+        <p> Last Updated May 2025</p>
         <div class="footer-links">
             <a href="https://www.linkedin.com/in/leoray">LinkedIn</a> | 
             <a href="https://github.com/Leo-Ray465">GitHub</a>
+            
         </div>
+        <a href="login.html" class="footer-login">Login</a>
     </footer>
 
 </body>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Leo Ray</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .main-content {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .left-panel {
+      flex: 2;
+    }
+
+    .right-panel {
+      flex: 1;
+      border-left: 2px solid #ccc;
+      padding-left: 20px;
+    }
+
+    .upload-preview {
+      margin-top: 10px;
+      max-width: 100%;
+      height: auto;
+      display: none;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    const savedColor = localStorage.getItem("themeColor");
+    if (savedColor) {
+      document.documentElement.style.setProperty("--primary-color", savedColor);
+    }
+  </script>
+
+  <section class="top">
+    <div class="top-wrapper">
+      <div class="social-icons">
+        <a href="https://www.instagram.com/truman.ray" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="icon">
+          @truman.ray
+        </a>
+        <a href="https://www.linkedin.com/in/leoray" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" class="icon">
+          leoray
+        </a>
+        <a href="https://github.com/Leo-Ray465" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="icon">
+          Leo-Ray465
+        </a>
+      </div>
+      <div class="top-text">
+        <h2>Leo Ray</h2>
+        <p>A collection of my experience and projects</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex_group">
+    <div class="flex_navigation">
+      <a href="index.html">About Me</a>
+    </div>
+    <div class="flex_navigation">
+      <a href="resume.html">Resume</a>
+    </div>
+    <div class="flex_navigation">
+      <a href="projects.html">Projects</a>
+    </div>
+    <div class="flex_navigation">
+      <a href="contact.html">Contact Me</a>
+    </div>
+    <div class="flex_navigation">
+      <a href="options.html">Options</a>
+    </div>
+  </div>
+
+  <h1 class="heading">Submitted Commissions</h1>
+
+  <div class="flex_sort">
+    <button class="ordering-button" id="ordering" data-sort="ordering">Ascending</button>
+    <button class="sort-button" data-sort="userName">Name</button>
+    <button class="sort-button" data-sort="deadline">Deadline</button>
+    <button class="sort-button" data-sort="budget">Budget</button>
+  </div>
+
+  <div class="main-content">
+    <div class="left-panel">
+      <iframe id="commissionsFrame" src="commissionview.php" width="100%" style="border:none; min-height:800px;"></iframe>
+    </div>
+
+    <div class="right-panel">
+      <h2>Upload Photo to Projects Page</h2>
+      <form action="upload.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" onchange="previewImage(this)" required><br><br>
+        <button type="submit">Upload</button>
+      </form>
+      <h3>Photo Preview</h3>
+      <img id="preview" class="upload-preview" alt="Image preview">
+    </div>
+  </div>
+
+  <script>
+    let currentSort = 'userName';   
+    let currentOrder = 'ASC';       
+    
+    function updateIframe() {
+      document.getElementById('commissionsFrame').src = `commissionview.php?sort=${currentSort}&ordering=${currentOrder}`;
+    }
+    
+    document.querySelectorAll('.sort-button').forEach(button => {
+      button.addEventListener('click', () => {
+        currentSort = button.dataset.sort;  
+        updateIframe();                     
+      });
+    });
+
+    document.getElementById('ordering').addEventListener('click', () => {
+      const btn = document.getElementById("ordering");
+      currentOrder = (btn.innerText === "DESC") ? "ASC" : "DESC";
+      btn.innerText = currentOrder;
+      updateIframe();  
+    });
+
+    function previewImage(input) {
+      const preview = document.getElementById('preview');
+      const file = input.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = e => {
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      } else {
+        preview.src = '';
+        preview.style.display = 'none';
+      }
+    }
+  </script>
+
+  <footer>
+    <p> Last Updated May 2025</p>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/leoray">LinkedIn</a> | 
+      <a href="https://github.com/Leo-Ray465">GitHub</a>
+    </div>
+  </footer>
+
+</body>
+</html>

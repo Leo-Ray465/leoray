@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leo Ray</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="contact.js"></script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leo Ray - Commission Request</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+  <script>
+    const savedColor = localStorage.getItem("themeColor");
+    if (savedColor) {
+      document.documentElement.style.setProperty("--primary-color", savedColor);
+    }
+  </script>
 
   <section class="top">
     <div class="top-wrapper">
@@ -32,52 +37,71 @@
       </div>
     </div>
   </section>
-  
 
-    <div class="flex_group">
-
-        <div class="flex_navigation">
-          <a href="index.html">About Me</a>
-        </div>
-
-        <div class="flex_navigation">
-            <a href="resume.html">Resume</a>
-          </div>
-  
-          <div class="flex_navigation">
-            <a href="projects.html">Projects</a>
-          </div>
-  
-        <div class="flex_navigation">
-            <a href="contact.html">Contact Me</a>
-        </div>
-      </div>
+  <div class="flex_group">
+    <div class="flex_navigation">
+      <a href="index.html">About Me</a>
     </div>
+    <div class="flex_navigation">
+      <a href="resume.html">Resume</a>
+    </div>
+    <div class="flex_navigation">
+      <a href="projects.html">Projects</a>
+    </div>
+    <div class="flex_navigation">
+      <a href="contact.html">Contact Me</a>
+    </div>
+    <div class="flex_navigation">
+      <a href="options.html">Options</a>
+    </div>
+  </div>
 
-    <h1 class="heading">Contact me</h1>
+  <h1 class="heading">Commission Request</h1>
 
-    <form>
-      <div class="contactFlex">
-        <textarea class="contactField" type="email" placeholder="Email" rows="1"></textarea>
-        <p class="contactField">or</p>
-        <textarea class="contactField" placeholder="Phone Number" rows="1"></textarea> 
-      </div>
+  <form class="form-container" id="commissionForm">
+    <div class="form-row">
+      <input class="form-input" name="userName" type="text" placeholder="Your Name" required>
+      <input class="form-input" name="email" type="email" placeholder="Your Email" required>
+    </div>
+  
+    <div class="form-row">
+      <input class="form-input" name="phone" type="text" placeholder="Phone Number (optional)">
+      <input class="form-input" name="deadline" type="text" placeholder="Preferred Deadline (e.g. YYYY-MM-DD">
+    </div>
+  
+    <textarea class="form-textarea" name="projDesc" rows="6" placeholder="Describe your project idea..." required></textarea>
+    <textarea class="form-textarea" name="budget" rows="3" placeholder="Budget range or max budget (optional)"></textarea>
+  
+    <br>
+    <button type="submit" class="form-button">Submit Commission</button>
+  </form>
+  
+  <script>
+    document.getElementById('commissionForm').addEventListener('submit', function(event) {
+    
+        const formData = new FormData(this);
+    
+        fetch('commissions.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+                alert('Thank you for submitting your request!');
+
+        })
+    });
+    </script>
+    
 
 
-      <textarea class=contactInput rows="10" placeholder="Enter Message Here" cols="50"></textarea>
-      <br>
-      <button type="submit" class="sendButton" onclick="sendMessage()">Send</button>
-    </form>
-    <body>
-      Note: This is non-functional at this point
-    </body>
-
-
-
-    <footer>
-      <p> Last Updated April 2025</p>
-      <div class="footer-links">
-          <a href="https://www.linkedin.com/in/leoray">LinkedIn</a> | 
-          <a href="https://github.com/Leo-Ray465">GitHub</a>
-      </div>
+  <footer>
+    <p>Last Updated May 2025</p>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/leoray">LinkedIn</a> |
+      <a href="https://github.com/Leo-Ray465">GitHub</a>
+    </div>
   </footer>
+
+</body>
+</html>

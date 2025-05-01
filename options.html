@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leo Ray</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    .preview-box {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: var(--primary-color, #2c3e50);
+      color: white;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    const savedColor = localStorage.getItem("themeColor");
+    if (savedColor) {
+      document.documentElement.style.setProperty("--primary-color", savedColor);
+    }
+  </script>
+
+  <section class="top">
+    <div class="top-wrapper">
+      <div class="social-icons">
+        <a href="https://www.instagram.com/truman.ray" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="icon">
+          @truman.ray
+        </a>
+        <a href="https://www.linkedin.com/in/leoray" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" class="icon">
+          leoray
+        </a>
+        <a href="https://github.com/Leo-Ray465" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="icon">
+          Leo-Ray465
+        </a>
+      </div>
+      <div class="top-text">
+        <h2>Leo Ray</h2>
+        <p>A collection of my experience and projects</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex_group">
+    <div class="flex_navigation"><a href="index.html">About Me</a></div>
+    <div class="flex_navigation"><a href="resume.html">Resume</a></div>
+    <div class="flex_navigation"><a href="projects.html">Projects</a></div>
+    <div class="flex_navigation"><a href="contact.html">Contact Me</a></div>
+    <div class="flex_navigation"><a href="options.html">Options</a></div>
+  </div>
+
+  <h1 class="heading">Options</h1>
+
+  <h1>Customize Site Colors</h1>
+
+  <label for="colorPicker">Pick a primary color:</label>
+  <input type="color" id="colorPicker" value="#2c3e50" />
+
+  <div class="preview-box" id="previewBox">
+    This is a preview of your theme color.
+  </div>
+
+  <button onclick="applyColor()">Apply Color</button>
+
+  <script>
+    const colorPicker = document.getElementById("colorPicker");
+    const previewBox = document.getElementById("previewBox");
+
+    const savedColor2 = localStorage.getItem("themeColor");
+    if (savedColor2) {
+      colorPicker.value = savedColor2;
+      previewBox.style.backgroundColor = savedColor2;
+      document.documentElement.style.setProperty("--primary-color", savedColor2);
+    }
+
+    colorPicker.addEventListener("input", function () {
+      previewBox.style.backgroundColor = this.value;
+    });
+
+    function applyColor() {
+      const selectedColor = colorPicker.value;
+      localStorage.setItem("themeColor", selectedColor);
+      document.documentElement.style.setProperty("--primary-color", selectedColor);
+      previewBox.style.backgroundColor = selectedColor;
+      alert("Theme color applied!");
+    }
+  </script>
+
+  <footer>
+    <p> Last Updated May 2025</p>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/leoray">LinkedIn</a> |
+      <a href="https://github.com/Leo-Ray465">GitHub</a>
+    </div>
+  </footer>
+</body>
+</html>
