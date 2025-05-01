@@ -45,6 +45,7 @@
 
 <body>
   <script>
+
     const savedColor = localStorage.getItem("themeColor");
     if (savedColor) {
       document.documentElement.style.setProperty("--primary-color", savedColor);
@@ -89,35 +90,32 @@
   <label for="colorPicker">Pick a primary color:</label>
   <input type="color" id="colorPicker" value="#2c3e50" />
 
-  <div class="preview-box" id="previewBox">
-    This is a preview of your theme color.
-  </div>
-
   <button onclick="applyColor()">Apply Color</button>
-
+  <button onclick="resetColor()" style="margin-left: 10px;">Reset to Default</button>
+  
   <script>
     const colorPicker = document.getElementById("colorPicker");
-    const previewBox = document.getElementById("previewBox");
-
+  
     const savedColor2 = localStorage.getItem("themeColor");
     if (savedColor2) {
       colorPicker.value = savedColor2;
-      previewBox.style.backgroundColor = savedColor2;
       document.documentElement.style.setProperty("--primary-color", savedColor2);
     }
-
-    colorPicker.addEventListener("input", function () {
-      previewBox.style.backgroundColor = this.value;
-    });
-
+  
     function applyColor() {
       const selectedColor = colorPicker.value;
       localStorage.setItem("themeColor", selectedColor);
       document.documentElement.style.setProperty("--primary-color", selectedColor);
-      previewBox.style.backgroundColor = selectedColor;
-      alert("Theme color applied!");
+    }
+  
+    function resetColor() {
+      const defaultColor = "#2c3e50";
+      localStorage.setItem("themeColor", defaultColor);
+      document.documentElement.style.setProperty("--primary-color", defaultColor);
+      colorPicker.value = defaultColor;
     }
   </script>
+  
 
   <footer>
     <p> Last Updated May 2025</p>
