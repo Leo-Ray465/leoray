@@ -2,10 +2,6 @@
 
 $conn = new mysqli("localhost", "root", "root", "commissiondb", 8889);
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_id"])) {
     $deleteId = intval($_POST["delete_id"]); 
     $conn->query("DELETE FROM commissions WHERE id = $deleteId");
