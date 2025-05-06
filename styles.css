@@ -113,6 +113,23 @@ a:link {
 }
 
 @media screen and (max-width: 768px) {
+  .top-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .social-icons {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .top-text {
+    text-align: center;
+  }
+  
+  
   .flex_group {
     flex-direction: column;
     align-items: center;
